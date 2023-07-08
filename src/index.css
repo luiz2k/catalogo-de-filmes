@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    background-color: var(--backgroundColor1);
+    font-size: 10px;
+}
+
+.light:root {
+    --backgroundColor1: #fafafa;
+    --backgroundColor2: #f4f4f5;
+    --backgroundColor3: #ffffff;
+    --textColor1: #000000;
+}
+
+.dark:root {
+    --backgroundColor1: #111827;
+    --backgroundColor2: #1f2937;
+    --backgroundColor3: #000000;
+    --textColor1: #ffffff;
+}
