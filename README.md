@@ -2,7 +2,7 @@
 
 ![Imagem do projeto](./src/assets/images/demostracao/demonstracao-do-projeto.gif)
 
-### [Visitar Projeto](#)
+### [Visitar Projeto](https://catalogo-de-filmes-seven.vercel.app/)
 
 ---
 
