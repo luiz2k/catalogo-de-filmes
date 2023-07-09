@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
 import { MovieInfo } from "./MovieInfo"
+import { Loading } from "../Loading/Loading"
 
 const fetchSettings = {
   method: 'GET',
@@ -19,6 +20,7 @@ const getMovieImage = (image) => {
 export const MovieDetails = (props) => {
   const { id } = useParams()
   const [movie, setMovie] = useState({})
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -74,22 +76,27 @@ export const MovieDetails = (props) => {
     }
 
     setMovie(movie)
+    setLoading(false)
   }
 
   return (
-    <MovieInfo
-      id={movie.id}
-      title={movie.title}
-      slogan={movie.tagline}
-      poster={movie.poster}
-      background={movie.background}
-      date={movie.date}
-      summary={movie.summary === '' ? 'Não encontrado' : movie.summary}
-      note={movie.note}
-      time={movie.time}
-      budget={movie.budget === '0' ? 'Não encontrado' : movie.budget}
-      revenue={movie.revenue === '0' ? 'Não encontrado' : movie.revenue}
-      genres={movie.genres}
-    />
+    <>
+      {loading === true
+        ? <Loading />
+        : <MovieInfo
+          id={movie.id}
+          title={movie.title}
+          slogan={movie.tagline}
+          poster={movie.poster}
+          background={movie.background}
+          date={movie.date}
+          summary={movie.summary === '' ? 'Não encontrado' : movie.summary}
+          note={movie.note}
+          time={movie.time}
+          budget={movie.budget === '0' ? 'Não encontrado' : movie.budget}
+          revenue={movie.revenue === '0' ? 'Não encontrado' : movie.revenue}
+          genres={movie.genres}
+        />}
+    </>
   )
 }
