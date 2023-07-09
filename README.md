@@ -2,7 +2,7 @@
 
 ![Imagem do projeto](./src/assets/images/demostracao/demonstracao-do-projeto.gif)
 
-### [Visitar Projeto](https://catalogo-de-filmes-seven.vercel.app/)
+### <a href="https://catalogodefilmes-luiz2k.vercel.app/" target="_blank">Visitar Projeto</a>
 
 ---
 
