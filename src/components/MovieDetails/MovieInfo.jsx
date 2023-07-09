@@ -1,6 +1,8 @@
 import { AiFillStar } from "react-icons/ai";
 
 export const MovieInfo = (props) => {
+    document.title = `${props.title}`
+
     return (
         <div style={{minHeight: 'calc(100vh - 60px)'}} className="py-10 md:flex">
             <article className='sm:grid sm:gap-10 sm:grid-cols-3 m-auto max-w-[100rem]'>
