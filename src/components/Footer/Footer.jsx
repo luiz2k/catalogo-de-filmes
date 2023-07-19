@@ -10,7 +10,7 @@ export const Footer = () => {
           <div className="pl-5 flex gap-5">
             <li><a href="https://github.com/luiz2k" target='_blank' className='hover:underline'>GitHub</a></li>
             <li><a href="#" target='_blank' className='hover:underline'>Linkedin</a></li>
-            <li><a href="#" target='_blank' className='hover:underline'>Portfólio</a></li>
+            <li><a href="https://portfolio-luiz2k.vercel.app" target='_blank' className='hover:underline'>Portfólio</a></li>
           </div>
         </ul>
       </div>
