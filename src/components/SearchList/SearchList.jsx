@@ -25,6 +25,7 @@ export const SearchList = (props) => {
 
   const [page, setPage] = useState(1);
   const [movie, setMovie] = useState([]);
+  const [noMovieWasFound, setNoMovieWasFound] = useState(false);
 
   const infiniteScroll = useRef(false);
 
@@ -37,12 +38,17 @@ export const SearchList = (props) => {
   }, [routeParameters]);
 
   useEffect(() => {
+    setNoMovieWasFound(false)
+
     const fetchUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=${props.language}&page=${page}`;
 
     theMovieDB(fetchUrl, fetchSettings);
     async function theMovieDB(url, settings) {
       const theMovieDB = await fetch(url, settings);
       const response = await theMovieDB.json();
+      console.log(response.results.length);
+
+      if (response.results.length === 0) setNoMovieWasFound(true);
 
       destructuring(response.results);
     }
@@ -102,7 +108,7 @@ export const SearchList = (props) => {
     <>
       <div style={{ minHeight: 'calc(100vh - 140px)' }} className="pb-10">
         <section className="flex justify-center gap-14 flex-wrap">
-          {movie.length === 0 ? (
+          {noMovieWasFound === true ? (
             <h2 className="text-4xl text-center">Nenhum filme foi encontrado</h2>
           ) : (
             movie.map((movie, index) => (
