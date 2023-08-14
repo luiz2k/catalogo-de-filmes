@@ -38,6 +38,7 @@ export const SearchList = (props) => {
   }, [routeParameters]);
 
   useEffect(() => {
+    setMovie([])
     setNoMovieWasFound(false)
 
     const fetchUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=${props.language}&page=${page}`;
