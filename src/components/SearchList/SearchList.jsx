@@ -38,8 +38,8 @@ export const SearchList = (props) => {
   }, [routeParameters]);
 
   useEffect(() => {
-    if(infiniteScroll.current !== true) setMovie([])
-    setNoMovieWasFound(false)
+    if (infiniteScroll.current !== true) setMovie([]);
+    setNoMovieWasFound(false);
 
     const fetchUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=${props.language}&page=${page}`;
 
@@ -47,9 +47,8 @@ export const SearchList = (props) => {
     async function theMovieDB(url, settings) {
       const theMovieDB = await fetch(url, settings);
       const response = await theMovieDB.json();
-      console.log(response.results.length);
 
-      if (response.results.length === 0) setNoMovieWasFound(true);
+      if (response.results.length === 0 && response.total_pages === 1) setNoMovieWasFound(true);
 
       destructuring(response.results);
     }
