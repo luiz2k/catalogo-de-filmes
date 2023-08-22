@@ -5,32 +5,18 @@ import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css/sea-green';
 
 import { CarouselCard } from './CarouselCard';
-
-const fetchSettings = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNmE5MmYwMTMwYTdlMjYxNTU0ZDczNzAxYzlmYjFhNSIsInN1YiI6IjYzZWQyNDAxNjk5ZmI3MDA5ZTNkOWY1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4hswoEcS7QRPSL-z8__xbTMp-X6pG81yoVyCiCLTDWM',
-  },
-};
-
-const getMovieImage = (image) => {
-  return `https://image.tmdb.org/t/p/original/${image}`;
-};
+import getMovie from '../../utils/getMovie';
+import getMovieImage from '../../utils/getMovieImage';
 
 export const Carousel = (props) => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    const fetchUrl = `https://api.themoviedb.org/3/movie/${props.category}?language=${props.language}&page=${props.page}`;
+    theMovieDB();
+    async function theMovieDB() {
+      const data = await getMovie(props.category, props.language, props.page);
 
-    theMovieDB(fetchUrl, fetchSettings);
-    async function theMovieDB(url, settings) {
-      const theMovieDB = await fetch(url, settings);
-      const response = await theMovieDB.json();
-
-      destructuring(response.results);
+      destructuring(data);
     }
   }, []);
 
